@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Live Center</title>
 
 <style>
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -37,7 +46,7 @@ header p {
 .live {
   display: inline-block;
   background: #d71920;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
   font-weight: bold;
@@ -51,9 +60,9 @@ header p {
 
 .search {
   width: 100%;
-  padding: 14px;
+  padding: 15px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 25px;
   font-size: 16px;
 }
@@ -93,6 +102,128 @@ header p {
   border-radius: 15px;
 }
 
+.status {
+  color: #67d391;
+  font-size: 14px;
+}
+
+.sports-buttons {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 5px 0 15px;
+  scrollbar-width: thin;
+}
+
+.sport-button {
+  flex: 0 0 auto;
+  border: none;
+  background: #142236;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sport-button.active {
+  background: #258cff;
+}
+
+.game {
+  background: #142236;
+  padding: 16px;
+  margin: 14px 0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.game-league {
+  color: #5eb2ff;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.match-visual {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.team-side {
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.team-badge {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 9px;
+}
+
+.fallback-badge {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 9px;
+  font-size: 42px;
+}
+
+.vs {
+  color: #8da0b7;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.game-score {
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.game-info {
+  text-align: center;
+  color: #aab7c7;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.event-thumb {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.watch-btn {
+  display: block;
+  width: fit-content;
+  margin: 14px auto 0;
+  padding: 10px 17px;
+  background: #d71920;
+  color: white;
+  text-decoration: none;
+  border-radius: 22px;
+  font-weight: bold;
+}
+
+.empty-message {
+  color: #aab7c7;
+  background: #142236;
+  padding: 17px;
+  border-radius: 12px;
+}
+
 .earthquake {
   background: #142236;
   padding: 15px;
@@ -119,258 +250,1550 @@ header p {
   font-weight: bold;
 }
 
-.status {
-  color: #67d391;
-  font-size: 14px;
-}
-
 footer {
   text-align: center;
   color: #8290a3;
   padding: 30px;
 }
+
+@media (min-width: 700px) {
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-  <span class="live">● LIVE</span>
-  <h1>🌎 LIVE CENTER</h1>
-  <p>Your information center</p>
-  <div id="clock"></div>
+
+<span class="live">
+● LIVE
+</span>
+
+<h1>
+🌎 LIVE CENTER
+</h1>
+
+<p>
+Your information center
+</p>
+
+<div id="clock"></div>
+
 </header>
+
 
 <div class="container">
 
+
 <input
-  class="search"
-  type="text"
-  placeholder="🔎 Search news, sports, markets, government..."
+class="search"
+type="text"
+placeholder="🔎 Search news, sports, markets, government..."
 >
+
 
 <div class="grid">
 
-  <div class="card">
-    <div class="icon">🏀</div>
-    <h3>Sports</h3>
-    <small>Scores & Games</small>
-  </div>
 
-  <div class="card">
-    <div class="icon">📈</div>
-    <h3>Finance</h3>
-    <small>Markets & Stocks</small>
-  </div>
+<div class="card"
+onclick="goSports()">
 
-  <div class="card">
-    <div class="icon">🛂</div>
-    <h3>Immigration</h3>
-    <small>Updates & Resources</small>
-  </div>
+<div class="icon">
+🏆
+</div>
 
-  <div class="card">
-    <div class="icon">🏛️</div>
-    <h3>Government</h3>
-    <small>Congress & Laws</small>
-  </div>
+<h3>
+Sports
+</h3>
 
-  <div class="card"
-    onclick="document.getElementById('earthquakes').scrollIntoView({behavior:'smooth'})">
-
-    <div class="icon">🌎</div>
-    <h3>Earthquakes</h3>
-    <small>USGS Live Data</small>
-
-  </div>
-
-  <div class="card">
-    <div class="icon">📰</div>
-    <h3>News</h3>
-    <small>Latest Headlines</small>
-  </div>
-
-  <div class="card">
-    <div class="icon">🌤️</div>
-    <h3>Weather</h3>
-    <small>Current Weather</small>
-  </div>
-
-  <div class="card">
-    <div class="icon">₿</div>
-    <h3>Crypto</h3>
-    <small>Digital Markets</small>
-  </div>
-
-  <div class="card">
-    <div class="icon">🚀</div>
-    <h3>Space</h3>
-    <small>NASA & Missions</small>
-  </div>
-
-  <div class="card">
-    <div class="icon">🎬</div>
-    <h3>Entertainment</h3>
-    <small>Movies & TV</small>
-  </div>
+<small>
+Games & Scores
+</small>
 
 </div>
+
+
+<div class="card">
+
+<div class="icon">
+📈
+</div>
+
+<h3>
+Finance
+</h3>
+
+<small>
+Markets & Stocks
+</small>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🛂
+</div>
+
+<h3>
+Immigration
+</h3>
+
+<small>
+Updates & Resources
+</small>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🏛️
+</div>
+
+<h3>
+Government
+</h3>
+
+<small>
+Congress & Laws
+</small>
+
+</div>
+
+
+<div class="card"
+onclick="goEarthquakes()">
+
+<div class="icon">
+🌎
+</div>
+
+<h3>
+Earthquakes
+</h3>
+
+<small>
+USGS Live Data
+</small>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+📰
+</div>
+
+<h3>
+News
+</h3>
+
+<small>
+Latest Headlines
+</small>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🌤️
+</div>
+
+<h3>
+Weather
+</h3>
+
+<small>
+Current Weather
+</small>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+₿
+</div>
+
+<h3>
+Crypto
+</h3>
+
+<small>
+Digital Markets
+</small>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🚀
+</div>
+
+<h3>
+Space
+</h3>
+
+<small>
+NASA & Missions
+</small>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🎬
+</div>
+
+<h3>
+Entertainment
+</h3>
+
+<small>
+Movies & TV
+</small>
+
+</div>
+
+
+</div>
+
+
+
+<!-- SPORTS CENTER -->
+
+<div
+class="section"
+id="sports">
+
+<h2>
+🏆 Sports Center
+</h2>
+
+<p class="status">
+● Connected to sports data
+</p>
+
+<p style="color:#aab7c7">
+Today's games, schedules and available scores
+</p>
+
+
+<div class="sports-buttons">
+
+
+<button
+class="sport-button active"
+onclick="loadSport('soccer', this)">
+⚽ Soccer
+</button>
+
+
+<button
+class="sport-button"
+onclick="loadSport('fifa', this)">
+🌎 FIFA
+</button>
+
+
+<button
+class="sport-button"
+onclick="loadSport('nfl', this)">
+🏈 NFL
+</button>
+
+
+<button
+class="sport-button"
+onclick="loadSport('mlb', this)">
+⚾ MLB
+</button>
+
+
+<button
+class="sport-button"
+onclick="loadSport('nba', this)">
+🏀 NBA
+</button>
+
+
+</div>
+
+
+<div id="sports-title">
+
+<h3>
+⚽ Soccer
+</h3>
+
+</div>
+
+
+<div id="sports-list">
+
+Loading games...
+
+</div>
+
+
+</div>
+
+
+
+<!-- TRENDING -->
 
 <div class="section">
-  <h2>🔥 Trending Now</h2>
-  <p>More live information sources coming soon.</p>
+
+<h2>
+🔥 Trending Now
+</h2>
+
+<p>
+More live information sources coming soon.
+</p>
+
 </div>
+
+
+
+<!-- ALERTS -->
 
 <div class="section">
-  <h2>🚨 Live Alerts</h2>
-  <p>Important updates will appear here.</p>
-</div>
 
-<div class="section" id="earthquakes">
+<h2>
+🚨 Live Alerts
+</h2>
 
-  <h2>🌎 Latest Earthquakes</h2>
-
-  <p class="status">
-    ● Connected to USGS
-  </p>
-
-  <p style="color:#aab7c7">
-    Latest earthquakes reported by the U.S. Geological Survey
-  </p>
-
-  <div id="earthquake-list">
-    Loading USGS earthquake data...
-  </div>
+<p>
+Important updates will appear here.
+</p>
 
 </div>
 
+
+
+<!-- EARTHQUAKES -->
+
+<div
+class="section"
+id="earthquakes">
+
+<h2>
+🌎 Latest Earthquakes
+</h2>
+
+<p class="status">
+● Connected to USGS
+</p>
+
+<p style="color:#aab7c7">
+
+Latest earthquakes reported by the
+U.S. Geological Survey
+
+</p>
+
+
+<div id="earthquake-list">
+
+Loading USGS earthquake data...
+
 </div>
+
+
+</div>
+
+
+</div>
+
+
 
 <footer>
-  Live Center • Public data sources
+
+Live Center • Public Data APIs
+
 </footer>
+
 
 
 <script>
 
+
+/* ==============================
+   CLOCK
+================================= */
+
+
 function updateClock() {
 
-  const now = new Date();
+  const now =
+    new Date();
 
-  document.getElementById("clock").textContent =
+  document.getElementById(
+    "clock"
+  ).textContent =
+
     now.toLocaleDateString() +
     " • " +
     now.toLocaleTimeString();
 
 }
 
+
 updateClock();
 
-setInterval(updateClock, 1000);
+setInterval(
+  updateClock,
+  1000
+);
 
 
 
-async function getEarthquakes() {
+/* ==============================
+   SCROLL BUTTONS
+================================= */
+
+
+function goSports() {
+
+  document
+    .getElementById("sports")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+function goEarthquakes() {
+
+  document
+    .getElementById("earthquakes")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+
+/* ==============================
+   LOCAL DATE
+================================= */
+
+
+function getToday() {
+
+  const date =
+    new Date();
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
+
+}
+
+
+
+/* ==============================
+   SPORTS CONFIG
+================================= */
+
+
+let currentSport =
+  "soccer";
+
+
+const sportInfo = {
+
+  soccer: {
+    title: "⚽ Soccer",
+    fallback: "⚽"
+  },
+
+  fifa: {
+    title: "🌎 FIFA",
+    fallback: "🌎"
+  },
+
+  nfl: {
+    title: "🏈 NFL",
+    fallback: "🏈"
+  },
+
+  mlb: {
+    title: "⚾ MLB",
+    fallback: "⚾"
+  },
+
+  nba: {
+    title: "🏀 NBA",
+    fallback: "🏀"
+  }
+
+};
+
+
+
+/* ==============================
+   FETCH SPORTS API
+================================= */
+
+
+async function fetchEvents(url) {
+
+  const response =
+    await fetch(url);
+
+  if (!response.ok) {
+
+    throw new Error(
+      "Sports API request failed"
+    );
+
+  }
+
+  const data =
+    await response.json();
+
+  return data.events || [];
+
+}
+
+
+
+/* ==============================
+   LOAD SPORTS
+================================= */
+
+
+async function loadSport(
+  sport,
+  button
+) {
+
+  currentSport =
+    sport;
+
+
+  document
+    .querySelectorAll(
+      ".sport-button"
+    )
+    .forEach(btn => {
+
+      btn.classList.remove(
+        "active"
+      );
+
+    });
+
+
+  if (button) {
+
+    button.classList.add(
+      "active"
+    );
+
+  }
+
+
+  document.getElementById(
+    "sports-title"
+  ).innerHTML =
+
+    "<h3>" +
+    sportInfo[sport].title +
+    "</h3>";
+
 
   const container =
-    document.getElementById("earthquake-list");
+    document.getElementById(
+      "sports-list"
+    );
+
+
+  container.textContent =
+    "Loading games...";
+
 
   try {
 
-    const response = await fetch(
-      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
-    );
 
-    if (!response.ok) {
-      throw new Error("USGS request failed");
-    }
+    const today =
+      getToday();
 
-    const data = await response.json();
 
-    container.innerHTML = "";
+    let events = [];
 
-    const earthquakes =
-      data.features.slice(0, 10);
 
-    earthquakes.forEach(eq => {
+    /* SOCCER */
 
-      const properties = eq.properties;
-
-      const magnitude =
-        properties.mag ?? "N/A";
-
-      const place =
-        properties.place ?? "Unknown location";
-
-      const time =
-        new Date(properties.time);
+    if (
+      sport === "soccer"
+    ) {
 
       const url =
-        properties.url;
 
-      const item =
-        document.createElement("div");
+        "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=" +
+        today +
+        "&s=Soccer";
 
-      item.className =
-        "earthquake";
 
-      const title =
-        document.createElement("h3");
+      events =
+        await fetchEvents(
+          url
+        );
 
-      title.textContent =
-        "M " +
-        magnitude +
-        " — " +
-        place;
+    }
 
-      const date =
-        document.createElement("p");
 
-      date.textContent =
-        "🕒 " +
-        time.toLocaleString();
 
-      const link =
-        document.createElement("a");
+    /* FIFA */
 
-      link.href = url;
+    else if (
+      sport === "fifa"
+    ) {
 
-      link.target =
-        "_blank";
 
-      link.rel =
-        "noopener noreferrer";
+      const worldCup =
 
-      link.textContent =
-        "View details on USGS →";
+        "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=" +
+        today +
+        "&l=4429";
 
-      item.appendChild(title);
-      item.appendChild(date);
-      item.appendChild(link);
 
-      container.appendChild(item);
+      const clubWorldCup =
 
-    });
+        "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=" +
+        today +
+        "&l=4503";
+
+
+      const results =
+        await Promise.all([
+
+          fetchEvents(
+            worldCup
+          ),
+
+          fetchEvents(
+            clubWorldCup
+          )
+
+        ]);
+
+
+      events = [
+
+        ...results[0],
+
+        ...results[1]
+
+      ];
+
+    }
+
+
+
+    /* NFL */
+
+    else if (
+      sport === "nfl"
+    ) {
+
+
+      const url =
+
+        "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=" +
+        today +
+        "&l=4391";
+
+
+      events =
+        await fetchEvents(
+          url
+        );
+
+    }
+
+
+
+    /* MLB */
+
+    else if (
+      sport === "mlb"
+    ) {
+
+
+      const url =
+
+        "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=" +
+        today +
+        "&l=4424";
+
+
+      events =
+        await fetchEvents(
+          url
+        );
+
+    }
+
+
+
+    /* NBA */
+
+    else if (
+      sport === "nba"
+    ) {
+
+
+      const url =
+
+        "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=" +
+        today +
+        "&l=4387";
+
+
+      events =
+        await fetchEvents(
+          url
+        );
+
+    }
+
+
+
+    showGames(
+      events,
+      sport
+    );
+
 
   }
 
   catch(error) {
 
-    container.textContent =
-      "⚠️ Earthquake data is temporarily unavailable.";
 
-    console.error(error);
+    console.error(
+      error
+    );
+
+
+    container.innerHTML =
+
+      '<div class="empty-message">' +
+      '⚠️ Sports data is temporarily unavailable.' +
+      '</div>';
+
 
   }
 
 }
 
+
+
+/* ==============================
+   TEAM LOGO
+================================= */
+
+
+function createTeamSide(
+  teamName,
+  badgeUrl,
+  fallback
+) {
+
+
+  const side =
+    document.createElement(
+      "div"
+    );
+
+
+  side.className =
+    "team-side";
+
+
+  if (
+    badgeUrl
+  ) {
+
+
+    const badge =
+      document.createElement(
+        "img"
+      );
+
+
+    badge.src =
+      badgeUrl;
+
+
+    badge.className =
+      "team-badge";
+
+
+    badge.loading =
+      "lazy";
+
+
+    badge.alt =
+      teamName || "Team";
+
+
+    badge.onerror =
+      function() {
+
+        this.style.display =
+          "none";
+
+      };
+
+
+    side.appendChild(
+      badge
+    );
+
+
+  }
+
+  else {
+
+
+    const fallbackBadge =
+      document.createElement(
+        "div"
+      );
+
+
+    fallbackBadge.className =
+      "fallback-badge";
+
+
+    fallbackBadge.textContent =
+      fallback;
+
+
+    side.appendChild(
+      fallbackBadge
+    );
+
+
+  }
+
+
+  const name =
+    document.createElement(
+      "strong"
+    );
+
+
+  name.textContent =
+    teamName || "TBD";
+
+
+  side.appendChild(
+    name
+  );
+
+
+  return side;
+
+}
+
+
+
+/* ==============================
+   DISPLAY SPORTS
+================================= */
+
+
+function showGames(
+  events,
+  sport
+) {
+
+
+  const container =
+    document.getElementById(
+      "sports-list"
+    );
+
+
+  container.innerHTML =
+    "";
+
+
+  if (
+    !events ||
+    events.length === 0
+  ) {
+
+
+    const message =
+      document.createElement(
+        "div"
+      );
+
+
+    message.className =
+      "empty-message";
+
+
+    message.textContent =
+      "No games listed today.";
+
+
+    container.appendChild(
+      message
+    );
+
+
+    return;
+
+  }
+
+
+
+  events.forEach(
+    event => {
+
+
+      const game =
+        document.createElement(
+          "div"
+        );
+
+
+      game.className =
+        "game";
+
+
+      /* LEAGUE */
+
+
+      const league =
+        document.createElement(
+          "div"
+        );
+
+
+      league.className =
+        "game-league";
+
+
+      league.textContent =
+        event.strLeague ||
+        sportInfo[sport].title;
+
+
+      game.appendChild(
+        league
+      );
+
+
+
+      /* TEAMS */
+
+
+      const visual =
+        document.createElement(
+          "div"
+        );
+
+
+      visual.className =
+        "match-visual";
+
+
+      const home =
+        createTeamSide(
+
+          event.strHomeTeam,
+
+          event.strHomeTeamBadge,
+
+          sportInfo[sport].fallback
+
+        );
+
+
+      const versus =
+        document.createElement(
+          "div"
+        );
+
+
+      versus.className =
+        "vs";
+
+
+      versus.textContent =
+        "VS";
+
+
+      const away =
+        createTeamSide(
+
+          event.strAwayTeam,
+
+          event.strAwayTeamBadge,
+
+          sportInfo[sport].fallback
+
+        );
+
+
+      visual.appendChild(
+        home
+      );
+
+
+      visual.appendChild(
+        versus
+      );
+
+
+      visual.appendChild(
+        away
+      );
+
+
+      game.appendChild(
+        visual
+      );
+
+
+
+      /* SCORE */
+
+
+      const homeScore =
+        event.intHomeScore;
+
+
+      const awayScore =
+        event.intAwayScore;
+
+
+      if (
+
+        homeScore !== null &&
+        homeScore !== "" &&
+        homeScore !== undefined &&
+
+        awayScore !== null &&
+        awayScore !== "" &&
+        awayScore !== undefined
+
+      ) {
+
+
+        const score =
+          document.createElement(
+            "div"
+          );
+
+
+        score.className =
+          "game-score";
+
+
+        score.textContent =
+
+          homeScore +
+          " - " +
+          awayScore;
+
+
+        game.appendChild(
+          score
+        );
+
+
+      }
+
+
+
+      /* INFORMATION */
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "game-info";
+
+
+      const details =
+        [];
+
+
+      if (
+        event.dateEvent
+      ) {
+
+        details.push(
+          "📅 " +
+          event.dateEvent
+        );
+
+      }
+
+
+      if (
+        event.strTime
+      ) {
+
+        details.push(
+          "🕒 " +
+          event.strTime.substring(
+            0,
+            5
+          )
+        );
+
+      }
+
+
+      if (
+        event.strVenue
+      ) {
+
+        details.push(
+          "🏟️ " +
+          event.strVenue
+        );
+
+      }
+
+
+      if (
+        event.strStatus
+      ) {
+
+        details.push(
+          event.strStatus
+        );
+
+      }
+
+
+      info.textContent =
+        details.join(
+          " • "
+        );
+
+
+      game.appendChild(
+        info
+      );
+
+
+
+      /* EVENT PHOTO */
+
+
+      const imageUrl =
+
+        event.strThumb ||
+        event.strPoster ||
+        null;
+
+
+      if (
+        imageUrl
+      ) {
+
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+
+        image.src =
+          imageUrl;
+
+
+        image.className =
+          "event-thumb";
+
+
+        image.loading =
+          "lazy";
+
+
+        image.alt =
+          event.strEvent ||
+          "Sports event";
+
+
+        game.appendChild(
+          image
+        );
+
+
+      }
+
+
+
+      /* VIDEO / HIGHLIGHTS */
+
+
+      if (
+        event.strVideo
+      ) {
+
+
+        let videoUrl =
+          event.strVideo;
+
+
+        if (
+
+          !videoUrl.startsWith(
+            "http"
+          )
+
+        ) {
+
+          videoUrl =
+            "https://" +
+            videoUrl;
+
+        }
+
+
+        const video =
+          document.createElement(
+            "a"
+          );
+
+
+        video.href =
+          videoUrl;
+
+
+        video.target =
+          "_blank";
+
+
+        video.rel =
+          "noopener noreferrer";
+
+
+        video.className =
+          "watch-btn";
+
+
+        video.textContent =
+          "▶ Watch Highlights";
+
+
+        game.appendChild(
+          video
+        );
+
+
+      }
+
+
+      container.appendChild(
+        game
+      );
+
+
+    }
+  );
+
+}
+
+
+
+/* ==============================
+   EARTHQUAKES
+================================= */
+
+
+async function getEarthquakes() {
+
+
+  const container =
+    document.getElementById(
+      "earthquake-list"
+    );
+
+
+  try {
+
+
+    const response =
+      await fetch(
+
+        "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+
+      );
+
+
+    if (
+      !response.ok
+    ) {
+
+      throw new Error(
+        "USGS request failed"
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    container.innerHTML =
+      "";
+
+
+    const earthquakes =
+      data.features.slice(
+        0,
+        10
+      );
+
+
+    earthquakes.forEach(
+      eq => {
+
+
+        const properties =
+          eq.properties;
+
+
+        const magnitude =
+
+          properties.mag ??
+          "N/A";
+
+
+        const place =
+
+          properties.place ??
+          "Unknown location";
+
+
+        const time =
+          new Date(
+            properties.time
+          );
+
+
+        const url =
+          properties.url;
+
+
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+
+        item.className =
+          "earthquake";
+
+
+
+        const title =
+          document.createElement(
+            "h3"
+          );
+
+
+        title.textContent =
+
+          "M " +
+          magnitude +
+          " — " +
+          place;
+
+
+
+        const date =
+          document.createElement(
+            "p"
+          );
+
+
+        date.textContent =
+
+          "🕒 " +
+          time.toLocaleString();
+
+
+
+        const link =
+          document.createElement(
+            "a"
+          );
+
+
+        link.href =
+          url;
+
+
+        link.target =
+          "_blank";
+
+
+        link.rel =
+          "noopener noreferrer";
+
+
+        link.textContent =
+          "View details on USGS →";
+
+
+
+        item.appendChild(
+          title
+        );
+
+
+        item.appendChild(
+          date
+        );
+
+
+        item.appendChild(
+          link
+        );
+
+
+        container.appendChild(
+          item
+        );
+
+
+      }
+    );
+
+
+  }
+
+  catch(error) {
+
+
+    console.error(
+      error
+    );
+
+
+    container.textContent =
+
+      "⚠️ Earthquake data is temporarily unavailable.";
+
+
+  }
+
+}
+
+
+
+/* ==============================
+   START PAGE
+================================= */
+
+
+loadSport(
+
+  "soccer",
+
+  document.querySelector(
+    ".sport-button"
+  )
+
+);
+
+
 getEarthquakes();
 
-/* Refresh earthquake feed every 5 minutes */
-setInterval(getEarthquakes, 300000);
+
+
+/* ==============================
+   AUTO REFRESH
+   EVERY 5 MINUTES
+================================= */
+
+
+setInterval(
+  () => {
+
+    loadSport(
+      currentSport,
+      null
+    );
+
+  },
+
+  300000
+);
+
+
+setInterval(
+
+  getEarthquakes,
+
+  300000
+
+);
+
 
 </script>
 
+
 </body>
+
 </html>
