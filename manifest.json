@@ -1,0 +1,10 @@
+{
+  "name": "Live Center",
+  "short_name": "Live Center",
+  "start_url": "/Live-Center/",
+  "scope": "/Live-Center/",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#07111e",
+  "description": "Live Center for sports, finance, immigration, government, news and weather."
+}
