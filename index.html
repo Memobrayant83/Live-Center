@@ -2760,7 +2760,12 @@ encodeURIComponent(rss);
 
 script.async = true;
 
-document.body.appendChild(script);
+script.onerror = () => {
+document.getElementById(
+"government-news-list"
+).textContent =
+"Government feed failed to load.";
+};document.body.appendChild(script);
 
 }
 
