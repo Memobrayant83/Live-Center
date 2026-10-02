@@ -2237,7 +2237,117 @@ console.error(error);
 
 container.textContent =
 "Financial news is temporarily unavailable.";
+async function getImmigrationNews() {
 
+const container =
+document.getElementById(
+"immigration-news-list"
+);
+
+try {
+
+const rss =
+"https://news.google.com/rss/search?q=US%20immigration&hl=en-US&gl=US&ceid=US:en";
+
+const url =
+"https://api.rss2json.com/v1/api.json?rss_url=" +
+encodeURIComponent(rss);
+
+const response =
+await fetch(url);
+
+if(!response.ok) {
+throw new Error(
+"Immigration news error"
+);
+}
+
+const data =
+await response.json();
+
+container.innerHTML = "";
+
+if(
+data.status !== "ok" ||
+!data.items ||
+data.items.length === 0
+) {
+
+container.textContent =
+"No immigration news available right now.";
+
+return;
+
+}
+
+data.items
+.slice(0,6)
+.forEach(item => {
+
+const card =
+document.createElement("div");
+
+card.className =
+"news-card";
+
+const title =
+document.createElement("div");
+
+title.className =
+"news-title";
+
+title.textContent =
+item.title;
+
+const date =
+document.createElement("div");
+
+date.className =
+"news-date";
+
+date.textContent =
+new Date(
+item.pubDate
+).toLocaleString();
+
+const link =
+document.createElement("a");
+
+link.className =
+"news-link";
+
+link.href =
+item.link;
+
+link.target =
+"_blank";
+
+link.rel =
+"noopener noreferrer";
+
+link.textContent =
+"Read full story →";
+
+card.appendChild(title);
+card.appendChild(date);
+card.appendChild(link);
+
+container.appendChild(card);
+
+});
+
+}
+
+catch(error) {
+
+console.error(error);
+
+container.textContent =
+"Immigration news is temporarily unavailable.";
+
+}
+
+}
 }
 
 }
