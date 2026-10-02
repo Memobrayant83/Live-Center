@@ -2666,7 +2666,103 @@ document.body.appendChild(script);
 
   }
 
-async function getLosAngelesWeather() {
+function showGovernmentFeed(data) {
+
+const container =
+document.getElementById(
+"government-news-list"
+);
+
+container.innerHTML = "";
+
+if(
+data.status !== "ok" ||
+!data.items ||
+data.items.length === 0
+) {
+
+container.textContent =
+"No government news available right now.";
+
+return;
+
+}
+
+data.items
+.slice(0,6)
+.forEach(item => {
+
+const card =
+document.createElement("div");
+
+card.className =
+"news-card";
+
+const title =
+document.createElement("div");
+
+title.className =
+"news-title";
+
+title.textContent =
+item.title;
+
+const date =
+document.createElement("div");
+
+date.className =
+"news-date";
+
+date.textContent =
+new Date(
+item.pubDate
+).toLocaleString();
+
+const link =
+document.createElement("a");
+
+link.className =
+"news-link";
+
+link.href =
+item.link;
+
+link.target =
+"_blank";
+
+link.rel =
+"noopener noreferrer";
+
+link.textContent =
+"Read full story →";
+
+card.appendChild(title);
+card.appendChild(date);
+card.appendChild(link);
+
+container.appendChild(card);
+
+});
+
+}
+
+function getGovernmentNewsJSONP() {
+
+const rss =
+"https://news.google.com/rss/search?q=US%20Congress%20government%20legislation&hl=en-US&gl=US&ceid=US:en";
+
+const script =
+document.createElement("script");
+
+script.src =
+"https://api.rss2json.com/v1/api.json?callback=showGovernmentFeed&rss_url=" +
+encodeURIComponent(rss);
+
+script.async = true;
+
+document.body.appendChild(script);
+
+}async function getLosAngelesWeather() {
 
 const container =
 document.getElementById(
