@@ -10,6 +10,7 @@ content="width=device-width, initial-scale=1.0">
 
 <title>Live Center</title>
 
+
 <style>
 
 * {
@@ -28,124 +29,62 @@ body {
 }
 
 
-/* =========================
-   COVER
-========================= */
+/* COVER */
 
 .cover {
-  height: 230px;
+  height: 220px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,170,255,.25), transparent 30%),
+    radial-gradient(circle at 80% 50%, rgba(0,255,170,.18), transparent 35%),
+    linear-gradient(135deg,#07111e,#14263d,#08111f);
   position: relative;
   overflow: hidden;
-
-  background:
-    radial-gradient(circle at 15% 30%, rgba(0,190,255,.25), transparent 30%),
-    radial-gradient(circle at 85% 40%, rgba(0,255,170,.18), transparent 35%),
-    linear-gradient(
-      135deg,
-      #07111e,
-      #13253b,
-      #08111f
-    );
 }
 
-.cover::before {
-  content: "LIVE  •  NEWS  •  SPORTS  •  FINANCE";
+.cover::after {
+  content: "LIVE • SPORTS • FINANCE • NEWS";
   position: absolute;
-
-  left: 25px;
-  bottom: 35px;
-
-  color: rgba(255,255,255,.12);
-
-  font-size: 28px;
+  bottom: 25px;
+  left: 20px;
+  color: rgba(255,255,255,.14);
   font-weight: 900;
-  letter-spacing: 5px;
-}
-
-.cover-bars {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  height: 70px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0 5%,
-      rgba(31,142,255,.45) 5% 9%,
-      transparent 9% 15%,
-      rgba(50,220,170,.28) 15% 20%,
-      transparent 20% 30%,
-      rgba(31,142,255,.35) 30% 37%,
-      transparent 37% 50%
-    );
-
-  opacity: .65;
+  letter-spacing: 4px;
+  font-size: 25px;
 }
 
 
-/* =========================
-   PROFILE CARD
-========================= */
+/* PROFILE */
 
 .profile {
   background: white;
-
-  margin-top: -1px;
-
-  padding:
-    0
-    22px
-    28px;
-
-  border-radius:
-    35px
-    35px
-    0
-    0;
-
-  position: relative;
-
+  padding: 0 22px 28px;
+  border-radius: 35px 35px 0 0;
   text-align: center;
 }
 
 .logo-wrap {
-  width: 180px;
-  height: 180px;
-
-  margin:
-    -90px
-    auto
-    20px;
-
+  width: 170px;
+  height: 170px;
+  margin: -85px auto 15px;
   background: white;
-
   border-radius: 50%;
-
   padding: 8px;
-
-  position: relative;
 }
 
 .logo {
   width: 100%;
   height: 100%;
-
   border-radius: 50%;
-
   background:
     radial-gradient(
       circle at 50% 45%,
-      #1a9db3 0 32%,
+      #179eb6 0 32%,
       white 33% 43%,
-      #050505 44% 72%,
-      white 73% 77%,
-      #178cff 78% 81%,
+      black 44% 71%,
+      white 72% 77%,
+      #1688ff 78% 81%,
       white 82%
     );
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,205 +93,125 @@ body {
 .logo-center {
   width: 55px;
   height: 55px;
-
   border-radius: 50%;
-
-  background: #050505;
+  background: black;
 }
 
-.profile-title {
-  font-size: 37px;
-
-  margin: 0;
-
-  font-weight: 900;
+.profile h1 {
+  font-size: 36px;
+  margin: 5px 0;
 }
 
 .verified {
   color: #1688ff;
-  font-size: 25px;
 }
 
-.stats {
+.subtitle {
   font-weight: bold;
-
   margin-top: 8px;
-
-  color: #181818;
-
-  font-size: 16px;
 }
 
 .description {
-  font-size: 20px;
-
-  margin-top: 25px;
-
-  line-height: 1.4;
-}
-
-.small-description {
-  color: #555;
-
-  margin-top: 10px;
-
+  margin-top: 20px;
+  font-size: 19px;
   line-height: 1.5;
 }
 
-
-/* =========================
-   BUTTONS
-========================= */
-
-.profile-buttons {
+.buttons {
   display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  gap: 12px;
-
-  margin-top: 25px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.profile-button {
+.profile-btn {
   border: none;
-
   padding: 15px;
-
   border-radius: 13px;
-
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bold;
-
-  cursor: pointer;
 }
 
-.button-gray {
+.gray {
   background: #e7e9ec;
-  color: #111;
 }
 
-.button-blue {
+.blue {
   background: #1688ff;
   color: white;
 }
 
 
-/* =========================
-   TABS
-========================= */
+/* TABS */
 
 .tabs {
   background: white;
-
   display: flex;
-
-  gap: 14px;
-
+  gap: 12px;
   overflow-x: auto;
-
-  padding:
-    15px
-    20px
-    18px;
-
-  border-top: 1px solid #eee;
-
+  padding: 15px;
   position: sticky;
-
   top: 0;
-
   z-index: 20;
+  border-top: 1px solid #eee;
 }
 
 .tab {
   border: none;
-
   background: transparent;
-
-  padding:
-    10px
-    17px;
-
-  border-radius: 25px;
-
-  font-size: 16px;
-
   font-weight: bold;
-
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 25px;
   white-space: nowrap;
-
-  cursor: pointer;
 }
 
 .tab.active {
   color: #1688ff;
-
   background: #e7f2ff;
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 .main {
   max-width: 900px;
-
   margin: auto;
-
-  padding:
-    20px
-    16px
-    50px;
+  padding: 20px 16px 50px;
 }
 
 .section {
   background: white;
-
   border-radius: 20px;
-
   padding: 20px;
-
   margin-bottom: 22px;
-
-  box-shadow:
-    0 3px 14px
-    rgba(0,0,0,.06);
+  box-shadow: 0 3px 14px rgba(0,0,0,.06);
 }
 
 .section h2 {
   margin-top: 0;
+  font-size: 28px;
+}
 
-  font-size: 27px;
+.status {
+  color: #29a866;
+  font-weight: bold;
 }
 
 
-/* =========================
-   CATEGORY GRID
-========================= */
+/* CATEGORIES */
 
-.category-grid {
+.grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, 1fr);
-
+  grid-template-columns: repeat(2,1fr);
   gap: 13px;
 }
 
 .category {
   background: #f5f7fa;
-
-  border-radius: 18px;
-
   padding: 22px 10px;
-
+  border-radius: 18px;
   text-align: center;
-
-  cursor: pointer;
 }
 
 .category-icon {
@@ -360,7 +219,7 @@ body {
 }
 
 .category h3 {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .category small {
@@ -368,40 +227,21 @@ body {
 }
 
 
-/* =========================
-   SPORTS
-========================= */
-
-.status {
-  color: #28a866;
-  font-weight: bold;
-}
+/* SPORTS */
 
 .sports-buttons {
   display: flex;
-
+  gap: 8px;
   overflow-x: auto;
-
-  gap: 9px;
-
-  margin:
-    15px
-    0;
+  margin: 15px 0;
 }
 
 .sport-button {
   border: none;
-
   background: #edf1f5;
-
-  padding:
-    11px
-    15px;
-
-  border-radius: 25px;
-
+  padding: 11px 15px;
+  border-radius: 23px;
   font-weight: bold;
-
   white-space: nowrap;
 }
 
@@ -412,168 +252,150 @@ body {
 
 .game {
   background: #f4f6f8;
-
-  margin:
-    14px
-    0;
-
-  padding: 16px;
-
   border-radius: 18px;
+  padding: 16px;
+  margin: 15px 0;
 }
 
 .game-league {
   color: #1688ff;
-
-  font-size: 13px;
-
   font-weight: bold;
-
-  margin-bottom: 12px;
+  font-size: 13px;
 }
 
-.match-visual {
+.match {
   display: grid;
-
-  grid-template-columns:
-    1fr
-    auto
-    1fr;
-
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-
   gap: 8px;
+  margin-top: 15px;
 }
 
-.team-side {
+.team {
   text-align: center;
 }
 
-.team-badge {
+.badge {
   width: 70px;
   height: 70px;
-
   object-fit: contain;
-
   display: block;
-
-  margin:
-    0
-    auto
-    8px;
-}
-
-.fallback-badge {
-  font-size: 48px;
+  margin: 0 auto 8px;
 }
 
 .vs {
   color: #777;
-
   font-weight: bold;
 }
 
-.game-score {
-  font-size: 28px;
-
-  font-weight: bold;
-
+.score {
   text-align: center;
-
-  margin:
-    13px
-    0;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 15px 0;
 }
 
 .game-info {
-  color: #657080;
-
   text-align: center;
-
-  line-height: 1.7;
-
-  font-size: 14px;
+  color: #657080;
+  line-height: 1.6;
 }
 
-.event-thumb {
+.event-image {
   width: 100%;
-
-  max-height: 300px;
-
+  max-height: 280px;
   object-fit: cover;
-
   border-radius: 15px;
-
-  margin-top: 14px;
+  margin-top: 15px;
 }
 
-.watch-btn {
+.watch {
   display: block;
-
   width: fit-content;
-
-  margin:
-    15px
-    auto
-    0;
-
-  padding:
-    11px
-    17px;
-
+  margin: 14px auto 0;
   background: #e51d36;
-
   color: white;
-
-  border-radius: 25px;
-
+  padding: 10px 16px;
+  border-radius: 22px;
   text-decoration: none;
-
   font-weight: bold;
 }
 
 
-/* =========================
-   FINANCE
-========================= */
+/* FINANCE */
 
 .finance-frame {
   background: #0d1420;
-
-  border-radius: 15px;
-
+  border-radius: 16px;
   overflow: hidden;
-
   margin-top: 15px;
 }
 
 .finance-note {
   color: #777;
-
-  font-size: 12px;
-
-  margin-top: 12px;
+  font-size: 13px;
 }
 
 
-/* =========================
-   EARTHQUAKES
-========================= */
+/* FINANCE NEWS */
+
+.finance-news {
+  margin-top: 30px;
+}
+
+.news-card {
+  background: #f4f6f8;
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+.news-card img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.news-content {
+  padding: 16px;
+}
+
+.news-source {
+  color: #1688ff;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.news-title {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 8px 0;
+}
+
+.news-date {
+  color: #777;
+  font-size: 13px;
+}
+
+.news-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #1688ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+/* EARTHQUAKES */
 
 .earthquake {
   background: #f4f6f8;
-
   padding: 16px;
-
-  margin:
-    12px
-    0;
-
   border-radius: 15px;
-}
-
-.earthquake h3 {
-  margin-top: 0;
+  margin: 12px 0;
 }
 
 .earthquake p {
@@ -582,42 +404,25 @@ body {
 
 .earthquake a {
   color: #1688ff;
-
   font-weight: bold;
-
   text-decoration: none;
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
   background: #07111e;
-
   color: white;
-
   text-align: center;
-
   padding: 30px;
-
-  font-size: 13px;
 }
 
 
 @media(min-width:700px) {
 
-  .category-grid {
-    grid-template-columns:
-      repeat(4,1fr);
-  }
-
-  .profile {
-    max-width: 900px;
-
-    margin-left: auto;
-    margin-right: auto;
+  .grid {
+    grid-template-columns: repeat(4,1fr);
   }
 
 }
@@ -630,45 +435,34 @@ footer {
 <body>
 
 
-<!-- COVER -->
+<div class="cover"></div>
 
-<div class="cover">
-
-  <div class="cover-bars"></div>
-
-</div>
-
-
-
-<!-- PROFILE -->
 
 <section class="profile">
 
 <div class="logo-wrap">
 
-  <div class="logo">
+<div class="logo">
 
-    <div class="logo-center"></div>
+<div class="logo-center"></div>
 
-  </div>
+</div>
 
 </div>
 
 
-<h1 class="profile-title">
+<h1>
 
 Live Center
 
-<span class="verified">
-✔
-</span>
+<span class="verified">✔</span>
 
 </h1>
 
 
-<div class="stats">
+<div class="subtitle">
 
-Live Data · News · Sports · Markets
+Live Data · Sports · Finance · News
 
 </div>
 
@@ -677,23 +471,19 @@ Live Data · News · Sports · Markets
 
 📊 Digital information center
 
-</div>
+<br>
 
-
-<div class="small-description">
-
-Sports, finance, immigration,
-government, earthquakes,
-weather, news and more.
+Sports, markets, financial news,
+earthquakes and more.
 
 </div>
 
 
-<div class="profile-buttons">
+<div class="buttons">
 
 <button
-class="profile-button button-gray"
-onclick="document.getElementById('categories').scrollIntoView()">
+class="profile-btn gray"
+onclick="goTo('categories')">
 
 Explore ▼
 
@@ -701,10 +491,10 @@ Explore ▼
 
 
 <button
-class="profile-button button-blue"
-onclick="document.getElementById('sports').scrollIntoView()">
+class="profile-btn blue"
+onclick="goTo('finance')">
 
-🔗 Live Data
+📈 Markets
 
 </button>
 
@@ -714,42 +504,30 @@ onclick="document.getElementById('sports').scrollIntoView()">
 
 
 
-<!-- TABS -->
-
 <div class="tabs">
 
 <button
 class="tab active"
-onclick="scrollToSection('categories',this)">
+onclick="goTo('categories',this)">
 All
 </button>
 
 <button
 class="tab"
-onclick="scrollToSection('sports',this)">
+onclick="goTo('sports',this)">
 Sports
 </button>
 
 <button
 class="tab"
-onclick="scrollToSection('finance',this)">
+onclick="goTo('finance',this)">
 Finance
 </button>
 
 <button
 class="tab"
-onclick="scrollToSection('earthquakes',this)">
+onclick="goTo('earthquakes',this)">
 Earthquakes
-</button>
-
-<button
-class="tab">
-News
-</button>
-
-<button
-class="tab">
-More
 </button>
 
 </div>
@@ -760,35 +538,25 @@ More
 
 
 
-<!-- CATEGORIES -->
-
 <section
 class="section"
 id="categories">
 
-<h2>
-Explore
-</h2>
+<h2>Explore</h2>
 
 
-<div class="category-grid">
+<div class="grid">
 
 
 <div
 class="category"
-onclick="goSports()">
+onclick="goTo('sports')">
 
-<div class="category-icon">
-🏆
-</div>
+<div class="category-icon">🏆</div>
 
-<h3>
-Sports
-</h3>
+<h3>Sports</h3>
 
-<small>
-Scores & games
-</small>
+<small>Scores & games</small>
 
 </div>
 
@@ -796,19 +564,13 @@ Scores & games
 
 <div
 class="category"
-onclick="goFinance()">
+onclick="goTo('finance')">
 
-<div class="category-icon">
-📈
-</div>
+<div class="category-icon">📈</div>
 
-<h3>
-Finance
-</h3>
+<h3>Finance</h3>
 
-<small>
-Markets & stocks
-</small>
+<small>Markets & news</small>
 
 </div>
 
@@ -816,17 +578,11 @@ Markets & stocks
 
 <div class="category">
 
-<div class="category-icon">
-🛂
-</div>
+<div class="category-icon">🛂</div>
 
-<h3>
-Immigration
-</h3>
+<h3>Immigration</h3>
 
-<small>
-Updates & resources
-</small>
+<small>Updates & resources</small>
 
 </div>
 
@@ -834,17 +590,11 @@ Updates & resources
 
 <div class="category">
 
-<div class="category-icon">
-🏛️
-</div>
+<div class="category-icon">🏛️</div>
 
-<h3>
-Government
-</h3>
+<h3>Government</h3>
 
-<small>
-Congress & laws
-</small>
+<small>Congress & laws</small>
 
 </div>
 
@@ -852,19 +602,13 @@ Congress & laws
 
 <div
 class="category"
-onclick="goEarthquakes()">
+onclick="goTo('earthquakes')">
 
-<div class="category-icon">
-🌎
-</div>
+<div class="category-icon">🌎</div>
 
-<h3>
-Earthquakes
-</h3>
+<h3>Earthquakes</h3>
 
-<small>
-USGS data
-</small>
+<small>USGS live data</small>
 
 </div>
 
@@ -872,17 +616,11 @@ USGS data
 
 <div class="category">
 
-<div class="category-icon">
-📰
-</div>
+<div class="category-icon">📰</div>
 
-<h3>
-News
-</h3>
+<h3>News</h3>
 
-<small>
-Latest headlines
-</small>
+<small>Latest headlines</small>
 
 </div>
 
@@ -890,17 +628,11 @@ Latest headlines
 
 <div class="category">
 
-<div class="category-icon">
-🌤️
-</div>
+<div class="category-icon">🌤️</div>
 
-<h3>
-Weather
-</h3>
+<h3>Weather</h3>
 
-<small>
-Current weather
-</small>
+<small>Current weather</small>
 
 </div>
 
@@ -908,17 +640,11 @@ Current weather
 
 <div class="category">
 
-<div class="category-icon">
-🚀
-</div>
+<div class="category-icon">🚀</div>
 
-<h3>
-Space
-</h3>
+<h3>Space</h3>
 
-<small>
-NASA & missions
-</small>
+<small>NASA & missions</small>
 
 </div>
 
@@ -935,14 +661,10 @@ NASA & missions
 class="section"
 id="sports">
 
-<h2>
-🏆 Sports Center
-</h2>
+<h2>🏆 Sports Center</h2>
 
 <p class="status">
-
 ● Connected to sports data
-
 </p>
 
 
@@ -981,13 +703,9 @@ onclick="loadSport('nba',this)">
 </div>
 
 
-<div id="sports-title">
-
-<h3>
+<h3 id="sports-title">
 ⚽ Soccer
 </h3>
-
-</div>
 
 
 <div id="sports-list">
@@ -1010,9 +728,10 @@ id="finance">
 📈 Finance Center
 </h2>
 
+
 <p class="status">
 
-● Market data
+● Markets & business news
 
 </p>
 
@@ -1024,6 +743,7 @@ Apple · Microsoft · NVIDIA · Tesla ·
 Gold · Oil
 
 </p>
+
 
 
 <div class="finance-frame">
@@ -1135,23 +855,35 @@ async>
 
 <p class="finance-note">
 
-Market data may be delayed depending on
-the exchange and source.
+Market data may be delayed depending
+on the exchange.
 
 </p>
+
+
+
 <div class="finance-news">
 
-  <h3>📰 Latest Finance News</h3>
+<h2>
+📰 Latest Finance News
+</h2>
 
-  <p class="status">
-    ● Business, economy and market headlines
-  </p>
+<p class="status">
 
-  <div id="finance-news-list">
-    Loading financial news...
-  </div>
+● Business, economy and market headlines
+
+</p>
+
+
+<div id="finance-news-list">
+
+Loading financial news...
 
 </div>
+
+</div>
+
+
 </section>
 
 
@@ -1165,6 +897,7 @@ id="earthquakes">
 <h2>
 🌎 Latest Earthquakes
 </h2>
+
 
 <p class="status">
 
@@ -1198,29 +931,22 @@ Live Center · Digital Information Platform
 <script>
 
 
-/* =====================
-   TABS
-===================== */
-
-function scrollToSection(
+function goTo(
 id,
 button
 ) {
 
+if(button) {
+
 document
 .querySelectorAll(".tab")
-.forEach(tab => {
-
-tab.classList.remove(
-"active"
+.forEach(tab =>
+tab.classList.remove("active")
 );
 
-});
+button.classList.add("active");
 
-
-button.classList.add(
-"active"
-);
+}
 
 
 document
@@ -1235,97 +961,41 @@ behavior:"smooth"
 
 
 
-function goSports() {
-
-document
-.getElementById("sports")
-.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-}
-
-
-
-function goFinance() {
-
-document
-.getElementById("finance")
-.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-}
-
-
-
-function goEarthquakes() {
-
-document
-.getElementById("earthquakes")
-.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-}
-
-
-
-/* =====================
-   DATE
-===================== */
+/* DATE */
 
 function getToday() {
 
-const date =
+const d =
 new Date();
 
-
 const year =
-date.getFullYear();
-
+d.getFullYear();
 
 const month =
 String(
-date.getMonth()+1
-).padStart(
-2,
-"0"
-);
-
+d.getMonth()+1
+).padStart(2,"0");
 
 const day =
 String(
-date.getDate()
-).padStart(
-2,
-"0"
-);
-
+d.getDate()
+).padStart(2,"0");
 
 return (
-
 year +
 "-" +
 month +
 "-" +
 day
-
 );
 
 }
 
 
 
-/* =====================
+/* =========================
    SPORTS
-===================== */
+========================= */
 
 let currentSport =
 "soccer";
@@ -1335,27 +1005,27 @@ const sportInfo = {
 
 soccer:{
 title:"⚽ Soccer",
-fallback:"⚽"
+icon:"⚽"
 },
 
 fifa:{
 title:"🌎 FIFA",
-fallback:"🌎"
+icon:"🌎"
 },
 
 nfl:{
 title:"🏈 NFL",
-fallback:"🏈"
+icon:"🏈"
 },
 
 mlb:{
 title:"⚾ MLB",
-fallback:"⚾"
+icon:"⚾"
 },
 
 nba:{
 title:"🏀 NBA",
-fallback:"🏀"
+icon:"🏀"
 }
 
 };
@@ -1367,19 +1037,16 @@ async function fetchEvents(url) {
 const response =
 await fetch(url);
 
-
 if(!response.ok) {
 
 throw new Error(
-"Sports API failed"
+"Sports API error"
 );
 
 }
 
-
 const data =
 await response.json();
-
 
 return data.events || [];
 
@@ -1400,13 +1067,11 @@ document
 .querySelectorAll(
 ".sport-button"
 )
-.forEach(btn => {
-
+.forEach(btn =>
 btn.classList.remove(
 "active"
+)
 );
-
-});
 
 
 if(button) {
@@ -1422,11 +1087,8 @@ document
 .getElementById(
 "sports-title"
 )
-.innerHTML =
-
-"<h3>" +
-sportInfo[sport].title +
-"</h3>";
+.textContent =
+sportInfo[sport].title;
 
 
 const container =
@@ -1449,8 +1111,6 @@ getToday();
 let events = [];
 
 
-/* SOCCER */
-
 if(
 sport === "soccer"
 ) {
@@ -1467,17 +1127,12 @@ today +
 }
 
 
-
-/* FIFA */
-
 else if(
 sport === "fifa"
 ) {
 
-
 const results =
 await Promise.all([
-
 
 fetchEvents(
 
@@ -1487,7 +1142,6 @@ today +
 
 ),
 
-
 fetchEvents(
 
 "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=" +
@@ -1495,7 +1149,6 @@ today +
 "&l=4503"
 
 )
-
 
 ]);
 
@@ -1510,9 +1163,6 @@ events = [
 
 }
 
-
-
-/* NFL */
 
 else if(
 sport === "nfl"
@@ -1530,9 +1180,6 @@ today +
 }
 
 
-
-/* MLB */
-
 else if(
 sport === "mlb"
 ) {
@@ -1548,9 +1195,6 @@ today +
 
 }
 
-
-
-/* NBA */
 
 else if(
 sport === "nba"
@@ -1578,122 +1222,104 @@ sport
 
 catch(error) {
 
-
-console.error(
-error
-);
-
+console.error(error);
 
 container.textContent =
 "Sports data temporarily unavailable.";
 
-
 }
 
 }
 
 
 
-/* TEAM */
-
-function createTeamSide(
+function teamBox(
 name,
 badge,
-fallback
+icon
 ) {
 
-
-const side =
+const box =
 document.createElement(
 "div"
 );
 
-
-side.className =
-"team-side";
+box.className =
+"team";
 
 
 if(badge) {
 
-
-const image =
+const img =
 document.createElement(
 "img"
 );
 
-
-image.src =
+img.src =
 badge;
 
+img.className =
+"badge";
 
-image.className =
-"team-badge";
-
-
-image.loading =
+img.loading =
 "lazy";
 
+img.onerror =
+function() {
 
-side.appendChild(
-image
+this.style.display =
+"none";
+
+};
+
+box.appendChild(
+img
 );
-
 
 }
 
 else {
 
-
-const icon =
+const fallback =
 document.createElement(
 "div"
 );
 
+fallback.style.fontSize =
+"45px";
 
-icon.className =
-"fallback-badge";
+fallback.textContent =
+icon;
 
-
-icon.textContent =
-fallback;
-
-
-side.appendChild(
-icon
+box.appendChild(
+fallback
 );
-
 
 }
 
 
-const teamName =
+const label =
 document.createElement(
 "strong"
 );
 
-
-teamName.textContent =
+label.textContent =
 name || "TBD";
 
-
-side.appendChild(
-teamName
+box.appendChild(
+label
 );
 
-
-return side;
+return box;
 
 }
 
 
-
-/* SHOW GAMES */
 
 function showGames(
 events,
 sport
 ) {
-
 
 const container =
 document.getElementById(
@@ -1710,28 +1336,24 @@ if(
 events.length === 0
 ) {
 
-
 container.textContent =
 "No games listed today.";
-
 
 return;
 
 }
 
 
-
 events.forEach(
 event => {
 
 
-const game =
+const card =
 document.createElement(
 "div"
 );
 
-
-game.className =
+card.className =
 "game";
 
 
@@ -1740,18 +1362,14 @@ document.createElement(
 "div"
 );
 
-
 league.className =
 "game-league";
 
-
 league.textContent =
-
 event.strLeague ||
 sportInfo[sport].title;
 
-
-game.appendChild(
+card.appendChild(
 league
 );
 
@@ -1762,19 +1380,21 @@ document.createElement(
 "div"
 );
 
-
 match.className =
-"match-visual";
+"match";
 
 
-const home =
-createTeamSide(
+match.appendChild(
+
+teamBox(
 
 event.strHomeTeam,
 
 event.strHomeTeamBadge,
 
-sportInfo[sport].fallback
+sportInfo[sport].icon
+
+)
 
 );
 
@@ -1784,31 +1404,11 @@ document.createElement(
 "div"
 );
 
-
 vs.className =
 "vs";
 
-
 vs.textContent =
 "VS";
-
-
-const away =
-createTeamSide(
-
-event.strAwayTeam,
-
-event.strAwayTeamBadge,
-
-sportInfo[sport].fallback
-
-);
-
-
-match.appendChild(
-home
-);
-
 
 match.appendChild(
 vs
@@ -1816,11 +1416,21 @@ vs
 
 
 match.appendChild(
-away
+
+teamBox(
+
+event.strAwayTeam,
+
+event.strAwayTeamBadge,
+
+sportInfo[sport].icon
+
+)
+
 );
 
 
-game.appendChild(
+card.appendChild(
 match
 );
 
@@ -1830,21 +1440,20 @@ if(
 
 event.intHomeScore !== null &&
 event.intHomeScore !== "" &&
+event.intHomeScore !== undefined &&
 event.intAwayScore !== null &&
-event.intAwayScore !== ""
+event.intAwayScore !== "" &&
+event.intAwayScore !== undefined
 
 ) {
-
 
 const score =
 document.createElement(
 "div"
 );
 
-
 score.className =
-"game-score";
-
+"score";
 
 score.textContent =
 
@@ -1852,11 +1461,9 @@ event.intHomeScore +
 " - " +
 event.intAwayScore;
 
-
-game.appendChild(
+card.appendChild(
 score
 );
-
 
 }
 
@@ -1866,7 +1473,6 @@ const info =
 document.createElement(
 "div"
 );
-
 
 info.className =
 "game-info";
@@ -1932,45 +1538,39 @@ details.join(
 );
 
 
-game.appendChild(
+card.appendChild(
 info
 );
 
 
 
-const imageURL =
+const picture =
 
 event.strThumb ||
 event.strPoster;
 
 
 if(
-imageURL
+picture
 ) {
-
 
 const image =
 document.createElement(
 "img"
 );
 
-
 image.src =
-imageURL;
-
+picture;
 
 image.className =
-"event-thumb";
-
+"event-image";
 
 image.loading =
 "lazy";
 
-
-game.appendChild(
+card.appendChild(
 image
 );
-
 
 }
 
@@ -1979,7 +1579,6 @@ image
 if(
 event.strVideo
 ) {
-
 
 let videoURL =
 event.strVideo;
@@ -2003,33 +1602,30 @@ document.createElement(
 "a"
 );
 
-
 video.href =
 videoURL;
-
 
 video.target =
 "_blank";
 
+video.rel =
+"noopener noreferrer";
 
 video.className =
-"watch-btn";
-
+"watch";
 
 video.textContent =
 "▶ Watch Highlights";
 
-
-game.appendChild(
+card.appendChild(
 video
 );
-
 
 }
 
 
 container.appendChild(
-game
+card
 );
 
 
@@ -2040,12 +1636,11 @@ game
 
 
 
-/* =====================
+/* =========================
    EARTHQUAKES
-===================== */
+========================= */
 
 async function getEarthquakes() {
-
 
 const container =
 document.getElementById(
@@ -2062,6 +1657,17 @@ await fetch(
 "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
 
 );
+
+
+if(
+!response.ok
+) {
+
+throw new Error(
+"USGS error"
+);
+
+}
 
 
 const data =
@@ -2090,7 +1696,6 @@ document.createElement(
 "div"
 );
 
-
 item.className =
 "earthquake";
 
@@ -2099,7 +1704,6 @@ const title =
 document.createElement(
 "h3"
 );
-
 
 title.textContent =
 
@@ -2114,151 +1718,8 @@ document.createElement(
 "p"
 );
 
-
 time.textContent =
-async function getFinanceNews() {
 
-  const container =
-    document.getElementById("finance-news-list");
-
-  try {
-
-    const query =
-      "(stock market OR economy OR business OR finance OR inflation OR Federal Reserve OR Wall Street)";
-
-    const url =
-      "https://api.gdeltproject.org/api/v2/doc/doc" +
-      "?query=" + encodeURIComponent(query) +
-      "&mode=artlist" +
-      "&maxrecords=8" +
-      "&timespan=24h" +
-      "&sort=datedesc" +
-      "&format=json";
-
-    const response = await fetch(url);
-
-    const data = await response.json();
-
-    container.innerHTML = "";
-
-    if (!data.articles || data.articles.length === 0) {
-      container.textContent =
-        "No financial news available right now.";
-      return;
-    }
-
-    data.articles.forEach(article => {
-
-      const card =
-        document.createElement("article");
-
-      card.className = "news-card";
-
-
-      if (article.socialimage) {
-
-        const image =
-          document.createElement("img");
-
-        image.src = article.socialimage;
-
-        image.loading = "lazy";
-
-        image.alt =
-          article.title || "Finance news";
-
-        image.onerror = function() {
-          this.style.display = "none";
-        };
-
-        card.appendChild(image);
-      }
-
-
-      const content =
-        document.createElement("div");
-
-      content.className = "news-content";
-
-
-      const source =
-        document.createElement("div");
-
-      source.className = "news-source";
-
-      source.textContent =
-        article.domain || "News";
-
-
-      const title =
-        document.createElement("div");
-
-      title.className = "news-title";
-
-      title.textContent =
-        article.title || "Financial news";
-
-
-      const date =
-        document.createElement("div");
-
-      date.className = "news-date";
-
-      date.textContent =
-        article.seendate || "Recent";
-
-
-      const link =
-        document.createElement("a");
-
-      link.className = "news-link";
-
-      link.href = article.url;
-
-      link.target = "_blank";
-
-      link.rel = "noopener noreferrer";
-
-      link.textContent =
-        "Read full story →";
-
-
-      content.appendChild(source);
-      content.appendChild(title);
-      content.appendChild(date);
-      content.appendChild(link);
-
-      card.appendChild(content);
-
-      container.appendChild(card);
-
-    });
-
-  }
-
-  catch(error) {
-
-    console.error(error);
-
-    container.textContent =
-      "Financial news is temporarily unavailable.";
-
-  }
-
-}
-
-
-/* LOAD FINANCE NEWS */
-
-getFinanceNews();
-
-
-/* REFRESH FINANCE EVERY 5 MINUTES */
-
-setInterval(
-  getFinanceNews,
-  300000
-);
 "🕒 " +
 new Date(
 p.time
@@ -2270,14 +1731,14 @@ document.createElement(
 "a"
 );
 
-
 link.href =
 p.url;
-
 
 link.target =
 "_blank";
 
+link.rel =
+"noopener noreferrer";
 
 link.textContent =
 "View details on USGS →";
@@ -2287,11 +1748,9 @@ item.appendChild(
 title
 );
 
-
 item.appendChild(
 time
 );
-
 
 item.appendChild(
 link
@@ -2311,10 +1770,331 @@ item
 
 catch(error) {
 
+console.error(error);
 
 container.textContent =
 "Earthquake data temporarily unavailable.";
 
+}
+
+}
+
+
+
+/* =========================
+   FINANCE NEWS
+========================= */
+
+function formatNewsDate(raw) {
+
+if(
+!raw
+) {
+
+return "Recent";
+
+}
+
+
+const clean =
+String(raw)
+.replace("T","")
+.replace("Z","");
+
+
+if(
+clean.length < 12
+) {
+
+return raw;
+
+}
+
+
+const year =
+clean.slice(0,4);
+
+const month =
+clean.slice(4,6);
+
+const day =
+clean.slice(6,8);
+
+const hour =
+clean.slice(8,10);
+
+const minute =
+clean.slice(10,12);
+
+
+const date =
+new Date(
+
+`${year}-${month}-${day}T${hour}:${minute}:00Z`
+
+);
+
+
+if(
+isNaN(
+date.getTime()
+)
+) {
+
+return raw;
+
+}
+
+
+return date.toLocaleString();
+
+}
+
+
+
+async function getFinanceNews() {
+
+const container =
+document.getElementById(
+"finance-news-list"
+);
+
+
+try {
+
+
+const query =
+
+"(stock market OR Wall Street OR economy OR business OR finance OR Federal Reserve OR inflation)";
+
+
+const url =
+
+"https://api.gdeltproject.org/api/v2/doc/doc" +
+
+"?query=" +
+
+encodeURIComponent(
+query
+) +
+
+"&mode=artlist" +
+
+"&maxrecords=10" +
+
+"&timespan=24h" +
+
+"&sort=datedesc" +
+
+"&format=json";
+
+
+const response =
+await fetch(
+url
+);
+
+
+if(
+!response.ok
+) {
+
+throw new Error(
+"Finance news API error"
+);
+
+}
+
+
+const data =
+await response.json();
+
+
+container.innerHTML =
+"";
+
+
+if(
+!data.articles ||
+data.articles.length === 0
+) {
+
+container.textContent =
+"No financial news available right now.";
+
+return;
+
+}
+
+
+
+data.articles
+.forEach(
+article => {
+
+
+const card =
+document.createElement(
+"article"
+);
+
+card.className =
+"news-card";
+
+
+
+if(
+article.socialimage
+) {
+
+const image =
+document.createElement(
+"img"
+);
+
+image.src =
+article.socialimage;
+
+image.loading =
+"lazy";
+
+image.alt =
+article.title ||
+"Finance news";
+
+image.onerror =
+function() {
+
+this.style.display =
+"none";
+
+};
+
+card.appendChild(
+image
+);
+
+}
+
+
+
+const content =
+document.createElement(
+"div"
+);
+
+content.className =
+"news-content";
+
+
+
+const source =
+document.createElement(
+"div"
+);
+
+source.className =
+"news-source";
+
+source.textContent =
+
+article.domain ||
+"Finance News";
+
+
+
+const title =
+document.createElement(
+"div"
+);
+
+title.className =
+"news-title";
+
+title.textContent =
+
+article.title ||
+"Financial news";
+
+
+
+const date =
+document.createElement(
+"div"
+);
+
+date.className =
+"news-date";
+
+date.textContent =
+
+formatNewsDate(
+article.seendate
+);
+
+
+
+const link =
+document.createElement(
+"a"
+);
+
+link.className =
+"news-link";
+
+link.href =
+article.url;
+
+link.target =
+"_blank";
+
+link.rel =
+"noopener noreferrer";
+
+link.textContent =
+"Read full story →";
+
+
+
+content.appendChild(
+source
+);
+
+content.appendChild(
+title
+);
+
+content.appendChild(
+date
+);
+
+content.appendChild(
+link
+);
+
+
+card.appendChild(
+content
+);
+
+
+container.appendChild(
+card
+);
+
+
+}
+);
+
+
+}
+
+catch(error) {
+
+console.error(error);
+
+container.textContent =
+"Financial news is temporarily unavailable.";
 
 }
 
@@ -2322,7 +2102,9 @@ container.textContent =
 
 
 
-/* START */
+/* =========================
+   START
+========================= */
 
 loadSport(
 
@@ -2338,9 +2120,14 @@ document.querySelector(
 getEarthquakes();
 
 
-/* REFRESH EVERY 5 MIN */
+getFinanceNews();
+
+
+
+/* AUTO REFRESH */
 
 setInterval(
+
 () => {
 
 loadSport(
@@ -2349,17 +2136,32 @@ null
 );
 
 },
+
 300000
+
 );
 
 
 setInterval(
+
 getEarthquakes,
+
 300000
+
+);
+
+
+setInterval(
+
+getFinanceNews,
+
+300000
+
 );
 
 
 </script>
+
 
 </body>
 
