@@ -2746,36 +2746,52 @@ container.appendChild(card);
 
 }
 
-async function getGovernmentNewsJSONP() {
-
-const container =
-document.getElementById(
-"government-news-list"
-);
+function getGovernmentNewsJSONP() {
 
 const rss =
-"https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en";
+"https://news.google.com/rss/search?q=Congress&hl=en-US&gl=US&ceid=US:en";
 
-try {
+const script =
+document.createElement("script");
 
-const response = await fetch(
-"https://api.rss2json.com/v1/api.json?rss_url=" +
-encodeURIComponent(rss)
-);
+script.src =
+"https://api.rss2json.com/v1/api.json?callback=showGovernmentFeed&rss_url=" +
+encodeURIComponent(rss);
 
-const data =
-await response.json();
+script.async = true;
 
-showGovernmentFeed(data);
-
-} catch (error) {
-
-container.textContent =
-"Government news unavailable right now.";
+document.body.appendChild(script);
 
 }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
