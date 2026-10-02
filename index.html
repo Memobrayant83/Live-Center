@@ -1139,7 +1139,19 @@ Market data may be delayed depending on
 the exchange and source.
 
 </p>
+<div class="finance-news">
 
+  <h3>📰 Latest Finance News</h3>
+
+  <p class="status">
+    ● Business, economy and market headlines
+  </p>
+
+  <div id="finance-news-list">
+    Loading financial news...
+  </div>
+
+</div>
 </section>
 
 
@@ -2104,7 +2116,149 @@ document.createElement(
 
 
 time.textContent =
+async function getFinanceNews() {
 
+  const container =
+    document.getElementById("finance-news-list");
+
+  try {
+
+    const query =
+      "(stock market OR economy OR business OR finance OR inflation OR Federal Reserve OR Wall Street)";
+
+    const url =
+      "https://api.gdeltproject.org/api/v2/doc/doc" +
+      "?query=" + encodeURIComponent(query) +
+      "&mode=artlist" +
+      "&maxrecords=8" +
+      "&timespan=24h" +
+      "&sort=datedesc" +
+      "&format=json";
+
+    const response = await fetch(url);
+
+    const data = await response.json();
+
+    container.innerHTML = "";
+
+    if (!data.articles || data.articles.length === 0) {
+      container.textContent =
+        "No financial news available right now.";
+      return;
+    }
+
+    data.articles.forEach(article => {
+
+      const card =
+        document.createElement("article");
+
+      card.className = "news-card";
+
+
+      if (article.socialimage) {
+
+        const image =
+          document.createElement("img");
+
+        image.src = article.socialimage;
+
+        image.loading = "lazy";
+
+        image.alt =
+          article.title || "Finance news";
+
+        image.onerror = function() {
+          this.style.display = "none";
+        };
+
+        card.appendChild(image);
+      }
+
+
+      const content =
+        document.createElement("div");
+
+      content.className = "news-content";
+
+
+      const source =
+        document.createElement("div");
+
+      source.className = "news-source";
+
+      source.textContent =
+        article.domain || "News";
+
+
+      const title =
+        document.createElement("div");
+
+      title.className = "news-title";
+
+      title.textContent =
+        article.title || "Financial news";
+
+
+      const date =
+        document.createElement("div");
+
+      date.className = "news-date";
+
+      date.textContent =
+        article.seendate || "Recent";
+
+
+      const link =
+        document.createElement("a");
+
+      link.className = "news-link";
+
+      link.href = article.url;
+
+      link.target = "_blank";
+
+      link.rel = "noopener noreferrer";
+
+      link.textContent =
+        "Read full story →";
+
+
+      content.appendChild(source);
+      content.appendChild(title);
+      content.appendChild(date);
+      content.appendChild(link);
+
+      card.appendChild(content);
+
+      container.appendChild(card);
+
+    });
+
+  }
+
+  catch(error) {
+
+    console.error(error);
+
+    container.textContent =
+      "Financial news is temporarily unavailable.";
+
+  }
+
+}
+
+
+/* LOAD FINANCE NEWS */
+
+getFinanceNews();
+
+
+/* REFRESH FINANCE EVERY 5 MINUTES */
+
+setInterval(
+  getFinanceNews,
+  300000
+);
 "🕒 " +
 new Date(
 p.time
